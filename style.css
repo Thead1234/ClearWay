@@ -1,0 +1,395 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Segoe UI', sans-serif;
+  line-height: 1.6;
+  background: #f4f4f4;
+  color: #222;
+}
+
+/* Navbar */
+header {
+  background: #000;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 50px;
+  width: auto;
+  object-fit: contain;
+}
+
+.nav-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;        /* ← CENTER THE ITEMS HORIZONTALLY */
+  justify-content: center;    /* ← OPTIONAL: center vertically if full height */
+  text-align: center;         /* ← centers the text itself */
+  gap: 15px;                  /* ← nice spacing between links */
+}
+
+.nav-links li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+.nav-links li a:hover {
+  color: #ffd700;
+}
+.menu-toggle {
+  display: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background-image: url("assets/hero-bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: scroll;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  overflow: hidden;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.7));
+}
+
+.hero-content {
+  position: relative;
+  color: white;
+  z-index: 1;
+}
+.hero h1 {
+  font-size: 3rem;
+  animation: fadeInDown 1s ease;
+}
+.hero p {
+  margin: 1rem 0;
+  font-size: 1.2rem;
+  animation: fadeInUp 1s ease;
+}
+.btn {
+  padding: 0.7rem 1.5rem;
+  background: #ffd700;
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+.btn:hover {
+  background: #ffbf00;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* Desktop Default (for laptop and big screens) */
+/* Default desktop */
+.nav-links {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 30px;
+  list-style: none;
+}
+
+/* Menu button hidden on desktop */
+.menu-toggle {
+  display: none;
+  color: white;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .nav-links {
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    width: 220px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.9);
+    border-radius: 16px;
+    flex-direction: column;
+    align-items: center;
+    display: none; /* Hide by default */
+    z-index: 999;
+  }
+
+  .nav-links.active {
+    display: flex; /* Show on click */
+  }
+
+  .menu-toggle {
+    display: block; /* Show hamburger */
+  }
+}
+
+.company-name {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: white;
+  letter-spacing: 2px;
+  z-index: 1;
+  pointer-events:none;
+  opacity: 0;
+  animation: brandReveal 1.5s ease-out forwards;
+}
+
+
+
+/* Smooth fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* About Section */
+.about {
+  padding: 80px 20px;
+  background: #fff;
+  text-align: center;
+}
+.about-container {
+  max-width: 800px;
+  margin: auto;
+  animation: fadeIn 1.5s ease-in-out;
+}
+.about h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #000;
+}
+.about p {
+  font-size: 1.1rem;
+  color: #333;
+  line-height: 1.8;
+}
+
+/* Fade Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Services Section */
+.services {
+  background: #f4f4f4;
+  padding: 80px 20px;
+  text-align: center;
+}
+.services-container {
+  max-width: 1100px;
+  margin: auto;
+}
+.services h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #000;
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.service-card {
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeInUp 1s ease both;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.service-card h3 {
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  color: #000;
+}
+.service-card p {
+  color: #444;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Reuse animation */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+/* Contact Section */
+.contact {
+  background: #000;
+  color: #fff;
+  padding: 80px 20px;
+  text-align: center;
+}
+.contact-container {
+  max-width: 800px;
+  margin: auto;
+  animation: fadeIn 1.5s ease-in-out;
+}
+.contact h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+.contact p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+.contact-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.contact-buttons .btn {
+  padding: 0.8rem 1.8rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+.btn.call {
+  background: #ffd700;
+  color: #000;
+}
+.btn.call:hover {
+  background: #ffb700;
+}
+.btn.whatsapp {
+  background: #25d366;
+  color: #fff;
+}
+.btn.whatsapp:hover {
+  background: #1eb851;
+}
+
+.contact-info p {
+  margin: 0.3rem 0;
+  font-size: 1rem;
+  color: #ccc;
+}
+/* Footer */
+.footer {
+  background: #111;
+  color: #aaa;
+  padding: 30px 20px;
+  text-align: center;
+  font-size: 0.95rem;
+}
+.footer-container p {
+  margin: 5px 0;
+}
+/* Scroll reveal animation */
+.hidden {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.6s ease-out;
+}
+
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (max-width: 768px) {
+  .hero {
+    background-size: contain;            /* shows full image */
+    background-position: center top;     /* starts from top */
+    background-repeat: no-repeat;
+    background-color: #000;              /* fallback behind transparent area */
+    min-height: 100vh;                   /* keeps full screen height */
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+}
+
+
+
+
+/* Fix for sticky header overlapping section headings */
+#home,
+#about,
+#services,
+#contact {
+  scroll-margin-top: 100px;
+}
+html {
+  scroll-behavior: smooth;
+}
+@keyframes brandReveal {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
