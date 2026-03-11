@@ -227,3 +227,89 @@ window.addEventListener('error', (e) => {
     e.target.style.display = 'none';
   }
 }, true);
+
+// Directions Modal functionality
+const directionsBtn = document.getElementById('directionsBtn');
+const directionsModal = document.getElementById('directionsModal');
+const closeModal = document.getElementById('closeModal');
+
+// Function to open modal
+function openModal() {
+  if (directionsModal) {
+    directionsModal.classList.add('active');
+    directionsModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    
+    // Focus management for accessibility
+    setTimeout(() => {
+      const firstFocusableElement = directionsModal.querySelector('button, a, input, select, textarea, [tabindex]:not([tabindex="-1"])');
+      if (firstFocusableElement) {
+        firstFocusableElement.focus();
+      }
+    }, 100);
+  }
+}
+
+// Function to close modal
+function closeModalFunc() {
+  if (directionsModal) {
+    directionsModal.classList.remove('active');
+    directionsModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    
+    // Return focus to the directions button
+    if (directionsBtn) {
+      directionsBtn.focus();
+    }
+  }
+}
+
+// Event listeners for modal
+if (directionsBtn) {
+  directionsBtn.addEventListener('click', openModal);
+}
+
+if (closeModal) {
+  closeModal.addEventListener('click', closeModalFunc);
+}
+
+// Close modal when clicking outside the modal content
+if (directionsModal) {
+  directionsModal.addEventListener('click', (e) => {
+    if (e.target === directionsModal) {
+      closeModalFunc();
+    }
+  });
+}
+
+// Close modal with Escape key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && directionsModal && directionsModal.classList.contains('active')) {
+    closeModalFunc();
+  }
+});
+
+// Keyboard navigation within modal
+if (directionsModal) {
+  const focusableElements = directionsModal.querySelectorAll('button, a, input, select, textarea, [tabindex]:not([tabindex="-1"])');
+  const firstFocusableElement = focusableElements[0];
+  const lastFocusableElement = focusableElements[focusableElements.length - 1];
+
+  directionsModal.addEventListener('keydown', (e) => {
+    if (e.key === 'Tab') {
+      if (e.shiftKey) {
+        // Shift + Tab
+        if (document.activeElement === firstFocusableElement) {
+          e.preventDefault();
+          lastFocusableElement.focus();
+        }
+      } else {
+        // Tab
+        if (document.activeElement === lastFocusableElement) {
+          e.preventDefault();
+          firstFocusableElement.focus();
+        }
+      }
+    }
+  });
+}
