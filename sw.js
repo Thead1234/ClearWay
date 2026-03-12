@@ -1,10 +1,11 @@
 // Service Worker for Clear Way Breakdown Service
-const CACHE_NAME = 'clearway-v1';
+const CACHE_VERSION = 'v20240312';
+const CACHE_NAME = `clearway-${CACHE_VERSION}`;
 const urlsToCache = [
   '/',
   '/index.html',
-  '/style.css',
-  '/script.js',
+  `/style.css?v=${CACHE_VERSION}`,
+  `/script.js?v=${CACHE_VERSION}`,
   '/assets/logo.png',
   '/assets/hero-bg.jpg'
 ];
