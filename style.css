@@ -1179,7 +1179,7 @@ section {
   background: var(--bg-primary);
   padding: var(--space-xl);
   border-radius: var(--radius-xl);
-  margin-top: var(--space-md);
+  margin-top: 0;
   box-shadow: var(--shadow-md);
   border: 1px solid var(--border-light);
 }
@@ -1343,7 +1343,7 @@ section {
 /* Management Section */
 .management {
   padding: var(--space-3xl) var(--space-xl);
-  margin: var(--space-xl) auto var(--space-md);
+  margin: var(--space-lg) auto 0;
   max-width: 1200px;
   background: rgba(10, 10, 10, 0.85);
   border-radius: var(--radius-xl);
@@ -1646,7 +1646,7 @@ section {
   color: var(--dark-text);
   padding: clamp(1.5rem, 4vw, 3rem) clamp(1rem, 3vw, 2rem);
   text-align: center;
-  margin-top: var(--space-xl);
+  margin-top: 0;
   border-top: 2px solid rgba(255, 255, 255, 0.15);
   border-bottom: 1px solid rgba(0, 0, 0, 0.3);
   box-shadow: 
