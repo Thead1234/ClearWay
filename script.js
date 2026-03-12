@@ -134,6 +134,10 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // Performance optimizations and loading states
 const images = document.querySelectorAll('img');
 images.forEach(img => {
+  if (img.classList.contains('brand-logo') || img.classList.contains('critical-icon')) {
+    img.style.opacity = '';
+    return;
+  }
   // Add loading state
   img.style.opacity = '0';
   img.style.transition = 'opacity 0.3s ease';
@@ -224,7 +228,13 @@ document.querySelectorAll('.btn').forEach(btn => {
 window.addEventListener('error', (e) => {
   if (e.target.tagName === 'IMG') {
     console.warn('Image failed to load:', e.target.src);
-    e.target.style.display = 'none';
+    if (e.target.classList.contains('brand-logo') || e.target.classList.contains('critical-icon')) {
+      // Keep critical imagery visible even if load fails
+      e.target.style.display = '';
+      e.target.setAttribute('aria-hidden', 'false');
+    } else {
+      e.target.style.display = 'none';
+    }
   }
 }, true);
 

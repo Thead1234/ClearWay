@@ -869,6 +869,12 @@ main {
   box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
 }
 
+.btn .whatsapp-icon {
+  width: 26px !important;
+  height: 26px !important;
+  margin-right: 0.45rem;
+}
+
 .btn.whatsapp:hover {
   background: linear-gradient(135deg, var(--success-green-hover) 0%, #1a9d47 100%);
   box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
@@ -1309,32 +1315,37 @@ section {
 /* Floating WhatsApp */
 .floating-whatsapp {
   position: fixed;
-  bottom: var(--space-xl);
-  right: var(--space-xl);
-  background: var(--success-green);
-  padding: var(--space-md);
+  bottom: var(--space-md);
+  right: var(--space-md);
+  background: linear-gradient(135deg, var(--success-green) 0%, #1eb851 100%);
   border-radius: 50%;
-  box-shadow: var(--shadow-lg);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
   z-index: 999;
   transition: var(--transition-normal);
   animation: pulse 2s infinite;
-  width: 60px;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 56px;
+  height: 56px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+}
+
+.floating-whatsapp .whatsapp-icon {
+  width: 30px !important;
+  height: 30px !important;
 }
 
 .floating-whatsapp:hover {
   transform: scale(1.1);
-  background: var(--success-green-hover);
-  box-shadow: var(--shadow-xl);
+  background: linear-gradient(135deg, var(--success-green-hover) 0%, #1a9d47 100%);
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.35);
 }
 
 .floating-whatsapp img {
-  width: 24px;
-  height: 24px;
-  filter: brightness(0) invert(1);
+  width: 34px;
+  height: 34px;
+  filter: none;
 }
 
 @keyframes pulse {
@@ -1354,14 +1365,13 @@ section {
   .floating-whatsapp {
     bottom: var(--space-lg);
     right: var(--space-lg);
-    width: 50px;
-    height: 50px;
-    padding: var(--space-sm);
+    width: 48px;
+    height: 48px;
   }
   
   .floating-whatsapp img {
-    width: 20px;
-    height: 20px;
+    width: 28px;
+    height: 28px;
   }
 }
 
